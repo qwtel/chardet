@@ -1,0 +1,25 @@
+service: chardet
+
+provider:
+  name: aws
+  runtime: python3.6
+
+functions:
+  detect:
+    handler: handler.detect
+    events:
+      - http:
+          path: /detect
+          method: POST
+          cors: true
+
+plugins:
+  - serverless-plugin-custom-binary
+  - serverless-python-requirements
+
+custom:
+  apigatewayBinary:
+    types:
+      - '*/*'
+  # pythonRequirements:
+  #   dockerizePip: non-linux
