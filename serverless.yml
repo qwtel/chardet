@@ -3,6 +3,7 @@ service: chardet
 provider:
   name: aws
   runtime: python3.6
+  memorySize: 512
 
 functions:
   detect:
